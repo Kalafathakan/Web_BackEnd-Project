@@ -1,0 +1,3 @@
+node_modules/*
+RestaurantWebAPI/node_modules/*
+.env

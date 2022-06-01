@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>{{title}}</title>
+  <script type="text/javascript" src="/libraries/jquery/jquery-3.6.0.js"></script>
+  <script type="text/javascript" src="/libraries/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/libraries/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="/libraries/fontawesome/css/all.min.css">
+  <link rel='stylesheet' href='/css/main.css' />
+  <script type="text/javascript" src="/main.js"></script>
+
+</head>
+
+<body>
+  <div id="whole">
+    <h3>{{title}}</h3>
+    <hr>
+    <div id="answer_base">
+      <h4 style="color: blue; margin-bottom: 15px; padding: 5px; padding-left: 15px; display: inline-block;">Restaurant List</h4>
+      <div id="optionsAll" style="display: inline-block; width: calc(100% - 215px); text-align: right; margin-right: 10px;">
+        <input style="display: inline-block;" id="addNewButton" type="button" value="Add New Restaurant">
+        <input style="display: inline-block;" id="getButton" type="button" value="Get Page">
+
+        <label style="display: inline-block; margin-left: 10px; margin-right: 5px;">Cuisine:</label>
+        <input style="width: 100px; height: 30px; display: inline-block;" type="text" class="form-control" id="cuisine" name="cuisine" value="{{cuisine}}">
+
+        <label style="display: inline-block; margin-left: 10px; margin-right: 5px;">Borough:</label>
+        <input style="width: 100px; height: 30px; display: inline-block;" type="text" class="form-control" id="borough" name="borough" value="{{borough}}">
+        <div style="display: inline-block; margin-left: 3px;">
+          <span id="totalRecords" style="vertical-align: top; margin-top: 1px;" class="badge rounded-pill bg-success">{{totalCount}} Records</span>
+        </div>
+
+        <label style="display: inline-block; margin-left: 10px; margin-right: 3px;">Page No:</label>
+        <input style="width: 85px; height: 30px; display: inline-block;" type="number" min="1" class="form-control" id="pageNo" name="pageNo" value="{{page}}">
+
+        <label style="display: inline-block; margin-left: 10px; margin-right: 3px;">Rows Per Page:</label>
+        <input style="width: 85px; height: 30px; display: inline-block;" type="number" min="1" class="form-control" id="perPage" name="perPage" value="{{perPage}}">
+      </div>
+    </div>
+    <div id="answer">
+      {{> (lookup . 'partialName') }}
+    </div>
+
+    <div id="buttonsDiv">
+      <input id="firstButton" type="button" value="First Page" style="margin-left: 40px;">
+      <input id="prevButton" type="button" value="Prev Page" style="margin-left: 10px;">
+      <div style="float: center; display: inline-block; width: 300px;">
+        <input id="loginButton" type="button" value="Login" style="margin-right: 20px;">
+        <label id="passwordLabel" style="display: inline-block; margin-right: 5px; margin-right: 3px;">Password:</label>
+        <input id="password" type="password" style="width: 80px;" value="">
+        <label id="loginError" style="display: inline-block; margin-right: 5px; color: red"></label>
+        <input id="accessToken" type="text" value="" style="display: none">
+      </div>
+      <input id="lastButton" type="button" value="Last Page" style="float: right; margin-right: 40px;">
+      <input id="nextButton" type="button" value="Next Page" style="float: right; margin-right: 10px;">
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>

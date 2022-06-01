@@ -1,0 +1,44 @@
+<table style="font-size: 12px;">
+  <thead>
+    <tr>
+      <th rowspan="2" style="width: 125px;">_id</th>
+      <th colspan="4" style="width: 250px;">Address</th>
+      <th rowspan="2" style="width: 70px;">Borough</th>
+      <th rowspan="2" style="width: 70px;">Cuisine</th>
+      <th colspan="3" style="width: 180px;">Grades</th>
+      <th rowspan="2" style="width: 90px;">Name</th>
+      <th rowspan="2" style="width: 100px;">Restaurant ID</th>
+      <th rowspan="2" style="width: 60px;">Actions</th></tr>
+    <tr>
+      <th style="width: 40px;">Building</th>
+      <th style="width: 150px;">Co-ordinates</th>
+      <th style="width: 100px;">Street</th>
+      <th style="width: 50px;">Zip</th>
+
+      <th>Date</th>
+      <th>Grade</th>
+      <th>Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each restaurants}}
+    <tr>
+      <td><a href="/api/restaurant/{{this._doc._id}}?accessToken={{../accessToken}}">{{this._doc._id}}</a></td>
+      <td style="width: 50px;">{{this._doc.address.building}}</td>
+      <td style="text-align: left;">{{{getArrayItemsAsString this._doc.address.coord}}}</td>
+      <td>{{this._doc.address.street}}</td>
+      <td>{{this._doc.address.zipcode}}</td>
+      <td>{{this._doc.borough}}</td>
+      <td>{{this._doc.cuisine}}</td>
+      <td>{{{getArrayDateItemsAsString this._doc.grades 'date'}}}</td>
+      <td>{{{getArrayItemsAsStringForIndex this._doc.grades 'grade'}}}</td>
+      <td>{{{getArrayItemsAsStringForIndex this._doc.grades 'score'}}}</td>
+      <td>{{this._doc.name}}</td>
+      <td>{{this._doc.restaurant_id}}</td>
+      <td><a href="/api/restaurant_update/{{this._doc._id}}?accessToken={{../accessToken}}" id="restaurant_edit" style="margin-right: 20px; color: green;"><i class="fa-solid fa-2x fa-pen-to-square"></i></a><a href="/api/restaurant_delete/{{this._doc._id}}?accessToken={{../accessToken}}" id="restaurant_delete" style="color: red;"><i class="fa-solid fa-2x fa-trash-can"></i></a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+  {{{getEmptyTotalCountMessage totalCount message}}}
+
+</table>
